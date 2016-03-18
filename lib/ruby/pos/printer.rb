@@ -1,14 +1,10 @@
 class Printer
-  def print_invoice
-    print_header
-    print_footer
-  end
 
   def print_details item_list
-    items_details = []
-    item_list.each() { |item|
-      items_details << item
-    }
+    items_details = ''
+    item_list.each do  |item|
+      items_details << "名称: #{item.name}, 数量: #{item.number}#{item.unit}, 单价: #{item.price}(元), 小计: #{item.sub_total}(元)\n"
+    end
     items_details
   end
 

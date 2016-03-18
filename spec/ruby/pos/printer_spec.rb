@@ -1,6 +1,6 @@
 require 'rspec'
 require 'ruby/pos/printer'
-require 'ruby/pos/models/cart_item'
+require 'ruby/pos/models/item'
 
 describe Printer do
 
@@ -23,11 +23,20 @@ describe Printer do
 
   describe '#printDetails' do
 
-    let(:item_list) { ['ITEM000001','ITEM000002'] }
+    let(:item) { Item.new('ITEM000001', 'apple', 3.0, '个', 3) }
+    let(:item1) { Item.new('ITEM000002', 'watermelon', 1.0, '斤', 13) }
+    let(:item_list) { [item] }
+    let(:item_list1) { [item, item1] }
 
-    it 'should print the item list details' do
+    it 'should print one item details when give one item' do
       details = printer.print_details(item_list)
-      expect(details).to eq(['ITEM000001','ITEM000002'])
+      expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.0(元), 小计: 9.0(元)\n")
+    end
+
+    it 'should print two items details when give two items' do
+      details = printer.print_details(item_list1)
+      expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.0(元), 小计: 9.0(元)\n" +
+        "名称: watermelon, 数量: 13斤, 单价: 1.0(元), 小计: 13.0(元)\n")
     end
   end
 
