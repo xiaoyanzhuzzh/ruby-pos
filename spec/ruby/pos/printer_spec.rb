@@ -25,7 +25,7 @@ describe Printer do
     end
   end
 
-  describe "#getTotalPrice" do
+  describe "#printTotalPrice" do
 
     it 'should calculate the total price' do
       total_price = printer.print_total_price cart_item_list1
