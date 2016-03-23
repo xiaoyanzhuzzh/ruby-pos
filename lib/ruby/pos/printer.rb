@@ -15,4 +15,12 @@ class Printer
   def print_footer
     '**********************'
   end
+
+  def get_total_price cart_item_list
+    total_price = 0.0
+    cart_item_list.each do |cart_item|
+      total_price += cart_item.sub_total
+    end
+    total_price
+  end
 end

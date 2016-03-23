@@ -26,4 +26,16 @@ describe Printer do
     end
   end
 
+  describe "#getTotalPrice" do
+    let(:item) { Item.new('ITEM000001', 'apple', 3.0, '个') }
+    let(:item1) { Item.new('ITEM000002', 'watermelon', 1.0, '斤') }
+    let(:cart_item_list1) { [CartItem.new(item, 3), CartItem.new(item1, 13)] }
+
+    it 'should calculate the total price' do
+      total_price = printer.get_total_price cart_item_list1
+      expect(total_price).to eq(22.0)
+    end
+  end
+
+
 end
