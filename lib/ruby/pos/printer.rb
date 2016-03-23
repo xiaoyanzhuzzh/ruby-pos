@@ -11,7 +11,7 @@ class Printer
   def print_header
     puts '***<没钱赚商店>购物清单***'
   end
-  
+
   def print_details cart_item_list
     cart_items_details = ''
     cart_item_list.each do  |cart_item|
@@ -22,10 +22,9 @@ class Printer
   end
 
   def print_total_price cart_item_list
-    total_price = 0.0
-    cart_item_list.each do |cart_item|
-      total_price += cart_item.sub_total
-    end
+    total_price = cart_item_list.map{|cart_item| cart_item.sub_total}.reduce(0){
+      |sum, each_total| sum += each_total
+    }
     puts '总计: ' + format_price(total_price).to_s + '(元)'
     total_price
   end
