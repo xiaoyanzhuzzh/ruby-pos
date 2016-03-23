@@ -16,13 +16,13 @@ describe Printer do
 
     it 'should print one cart item details when give one cart item' do
       details = printer.print_details(cart_item_list)
-      expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.0(元), 小计: 9.0(元)\n")
+      expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.00(元), 小计: 9.00(元)\n")
     end
 
     it 'should print two cart items details when give two cart items' do
       details = printer.print_details(cart_item_list1)
-      expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.0(元), 小计: 9.0(元)\n" +
-        "名称: watermelon, 数量: 13斤, 单价: 1.0(元), 小计: 13.0(元)\n")
+      expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.00(元), 小计: 9.00(元)\n" +
+        "名称: watermelon, 数量: 13斤, 单价: 1.00(元), 小计: 13.00(元)\n")
     end
   end
 
@@ -32,8 +32,8 @@ describe Printer do
     let(:cart_item_list1) { [CartItem.new(item, 3), CartItem.new(item1, 13)] }
 
     it 'should calculate the total price' do
-      total_price = printer.get_total_price cart_item_list1
-      expect(total_price).to eq(22.0)
+      total_price = printer.print_total_price cart_item_list1
+      expect(total_price).to eq(22.00)
     end
   end
 
