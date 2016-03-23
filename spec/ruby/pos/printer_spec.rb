@@ -6,13 +6,12 @@ require 'ruby/pos/models/cart_item'
 describe Printer do
 
   subject(:printer) { Printer.new }
+  let(:item) { Item.new('ITEM000001', 'apple', 3.0, '个') }
+  let(:item1) { Item.new('ITEM000002', 'watermelon', 1.0, '斤') }
+  let(:cart_item_list) { [CartItem.new(item, 3)] }
+  let(:cart_item_list1) { [CartItem.new(item, 3), CartItem.new(item1, 13)] }
 
   describe '#printDetails' do
-
-    let(:item) { Item.new('ITEM000001', 'apple', 3.0, '个') }
-    let(:item1) { Item.new('ITEM000002', 'watermelon', 1.0, '斤') }
-    let(:cart_item_list) { [CartItem.new(item, 3)] }
-    let(:cart_item_list1) { [CartItem.new(item, 3), CartItem.new(item1, 13)] }
 
     it 'should print one cart item details when give one cart item' do
       details = printer.print_details(cart_item_list)
@@ -27,15 +26,11 @@ describe Printer do
   end
 
   describe "#getTotalPrice" do
-    let(:item) { Item.new('ITEM000001', 'apple', 3.0, '个') }
-    let(:item1) { Item.new('ITEM000002', 'watermelon', 1.0, '斤') }
-    let(:cart_item_list1) { [CartItem.new(item, 3), CartItem.new(item1, 13)] }
 
     it 'should calculate the total price' do
       total_price = printer.print_total_price cart_item_list1
       expect(total_price).to eq(22.00)
     end
   end
-
 
 end
