@@ -11,7 +11,7 @@ describe Printer do
   let(:cart_item_list) { [CartItem.new(item, 3)] }
   let(:cart_item_list1) { [CartItem.new(item, 3), CartItem.new(item1, 13)] }
 
-  describe '#printDetails' do
+  describe '#InvoiceDetails' do
 
     it 'should print one cart item details when give one cart item' do
       details = printer.invoice_details(cart_item_list)
@@ -25,11 +25,11 @@ describe Printer do
     end
   end
 
-  describe "#printTotalPrice" do
+  describe '#invoiceTotal' do
 
     it 'should calculate the total price' do
       total_price = printer.invoice_total cart_item_list1
-      expect(total_price).to eq("总价: 22.00(元)")
+      expect(total_price).to eq('总价: 22.00(元)')
     end
   end
 
