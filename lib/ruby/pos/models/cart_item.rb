@@ -5,7 +5,7 @@ class CartItem
     @number = number
   end
 
-  def sub_total
+  def subtotal
     @item.price * @number
   end
 
