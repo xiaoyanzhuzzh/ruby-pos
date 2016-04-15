@@ -25,4 +25,8 @@ class CartItem
     @item.unit
   end
 
+  def item_promotion
+    @item.promotion
+  end
+
 end

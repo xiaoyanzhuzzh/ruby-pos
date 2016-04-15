@@ -6,13 +6,24 @@ require 'ruby/pos/models/cart_item'
 describe Calculator do
 
   let(:apple) { Item.new('ITEM000001', 'apple', 3.0, '个', 'buy_two_get_one') }
+  let(:watermelon) { Item.new('ITEM000002', 'watermelon', 1.0, '斤', 0.95) }
+
   let(:cart_apple) { CartItem.new(apple, 3) }
+  let(:cart_watermelon) { CartItem.new(watermelon, 10)}
 
   describe '#calculate_buy_two_get_one' do
 
     it 'should calculate correct subtotal when given a buy_two_get_one cart item' do
       subtotal = Calculator.calculate_buy_two_get_one cart_apple
       expect(subtotal).to eq(6.00)
+    end
+  end
+
+  describe '#calculate_discount' do
+
+    it 'should calculate correct subtotal when given a discount cart item' do
+      subtotal = Calculator.calculate_discount cart_watermelon
+      expect(subtotal).to eq(9.50)
     end
   end
 end
