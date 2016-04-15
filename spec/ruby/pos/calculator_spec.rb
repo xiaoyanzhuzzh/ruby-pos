@@ -1,7 +1,6 @@
 require 'rspec'
-require 'ruby/pos/printer'
-require 'ruby/pos/models/item'
-require 'ruby/pos/models/cart_item'
+require 'ruby/pos/promotion_calculator'
+
 
 describe Printer do
 
@@ -25,7 +24,7 @@ describe Printer do
 
       details = printer.invoice_details
       expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.00(元), 小计: 9.00(元)\n" +
-        "名称: watermelon, 数量: 13斤, 单价: 1.00(元), 小计: 13.00(元)\n")
+                                "名称: watermelon, 数量: 13斤, 单价: 1.00(元), 小计: 13.00(元)\n")
     end
   end
 

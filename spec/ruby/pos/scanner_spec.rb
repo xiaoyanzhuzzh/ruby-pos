@@ -5,9 +5,9 @@ require 'ruby/pos/models/cart_item'
 
 describe Scanner do
 
-  let(:apple) { Item.new('ITEM000001', 'apple', 3.0, '个') }
-  let(:watermelon) { Item.new('ITEM000003', 'watermelon', 1.0, '斤') }
-  let(:cola) { Item.new('ITEM000005', 'cola', 2.5, '瓶')}
+  let(:apple) { Item.new('ITEM000001', 'apple', 3.0, '个', '0') }
+  let(:watermelon) { Item.new('ITEM000003', 'watermelon', 1.0, '斤', '0') }
+  let(:cola) { Item.new('ITEM000005', 'cola', 2.5, '瓶', '0')}
 
   let(:cart_apple) { [CartItem.new(apple, 5)] }
   let(:cart_watermelon) { CartItem.new(watermelon, 2)}
