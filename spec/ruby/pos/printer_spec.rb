@@ -14,12 +14,16 @@ describe Printer do
   describe '#InvoiceDetails' do
 
     it 'should print one cart item details when give one cart item' do
-      details = printer.invoice_details(cart_item_list)
+      subject.register_cart_item_list cart_item_list
+      
+      details = printer.invoice_details
       expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.00(元), 小计: 9.00(元)\n")
     end
 
     it 'should print two cart items details when give two cart items' do
-      details = printer.invoice_details(cart_item_list1)
+      subject.register_cart_item_list cart_item_list1
+
+      details = printer.invoice_details
       expect(details).to eq("名称: apple, 数量: 3个, 单价: 3.00(元), 小计: 9.00(元)\n" +
         "名称: watermelon, 数量: 13斤, 单价: 1.00(元), 小计: 13.00(元)\n")
     end
@@ -28,7 +32,9 @@ describe Printer do
   describe '#invoiceTotal' do
 
     it 'should calculate the total price' do
-      total_price = printer.invoice_total cart_item_list1
+      subject.register_cart_item_list cart_item_list1
+
+      total_price = printer.invoice_total
       expect(total_price).to eq('总价: 22.00(元)')
     end
   end
