@@ -1,3 +1,4 @@
+require 'ruby/pos/calculator'
 class CartItem
   attr_accessor :number
   def initialize(item, number)
@@ -5,8 +6,14 @@ class CartItem
     @number = number
   end
 
-  def sub_total
-    @item.price * @number
+  def subtotal
+    if @item.promotion == 'buy_two_get_one'
+      Calculator.calculate_buy_two_get_one self
+    elsif @item.promotion == 0.95
+      Calculator.calculate_discount self
+    else
+      @item.price * @number
+    end
   end
 
   def item_barcode
