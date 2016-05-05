@@ -17,7 +17,7 @@ class Printer
   def invoice_details
     cart_items_details = ''
     @cart_item_list.each do |cart_item|
-      if cart_item.item_promotion.eql?('0.95')
+      if cart_item.item_promotion.eql?(0.95)
         cart_items_details << "名称: #{cart_item.item_name}, 数量: #{cart_item.number}#{cart_item.item_unit}, 单价: #{format_price(cart_item.item_price)}(元), 小计: #{format_price(cart_item.subtotal)}(元), 节省: #{format_price(cart_item.item_price * cart_item.number - cart_item.subtotal)}(元)\n"
       else
         cart_items_details << "名称: #{cart_item.item_name}, 数量: #{cart_item.number}#{cart_item.item_unit}, 单价: #{format_price(cart_item.item_price)}(元), 小计: #{format_price(cart_item.subtotal)}(元)\n"
