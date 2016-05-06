@@ -7,13 +7,7 @@ class CartItem
   end
 
   def subtotal
-    if @item.promotion == 'buy_two_get_one'
-      Calculator.calculate_buy_two_get_one self
-    elsif @item.promotion == 0.95
-      Calculator.calculate_discount self
-    else
-      @item.price * @number
-    end
+    Calculator.calculate_subtotal self
   end
 
   def saved_money
