@@ -5,13 +5,11 @@ class Printer
   end
 
   def print_invoice
-    puts "#{invoice_header}\n#{invoice_details}"
+    puts '***<没钱赚商店>购物清单***'
+    puts "#{invoice_details}"
     puts '-------------------------------------'
-    puts "#{invoice_total}\n#{invoice_footer}"
-  end
-
-  def invoice_header
-    '***<没钱赚商店>购物清单***'
+    puts "#{invoice_total}"
+    puts '**********************'
   end
 
   def invoice_details
@@ -22,16 +20,12 @@ class Printer
     total_price = @cart_item_list.map{|cart_item| cart_item.subtotal}.reduce(0){
       |sum, each_total| sum += each_total
     }
-    original_total_price = @cart_item_list.map{|cart_item| cart_item.number * cart_item.item_price}.reduce(0){
+    discounted_money = @cart_item_list.map{|cart_item| cart_item.saved_money}.reduce(0){
         |sum, each_total| sum += each_total
     }
-    discounted_price = original_total_price - total_price != 0.00 ? "\n节省: #{format_price(original_total_price - total_price)}(元)" : ''
+    discounted_info = discounted_money != 0.00 ? "\n节省: #{format_price(discounted_money)}(元)" : ''
 
-    "总价: #{format_price(total_price)}(元)#{discounted_price}"
-  end
-
-  def invoice_footer
-    '**********************'
+    "总价: #{format_price(total_price)}(元)#{discounted_info}"
   end
 
   private

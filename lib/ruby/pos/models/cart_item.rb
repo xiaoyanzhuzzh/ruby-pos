@@ -16,6 +16,10 @@ class CartItem
     end
   end
 
+  def saved_money
+    item_price * @number - self.subtotal
+  end
+
   def item_barcode
     @item.barcode
   end
