@@ -49,12 +49,18 @@ class Printer
   private
   def get_promotion_details
     promotion_details = ''
-    buy_two_get_one_cart_item_list = @cart_item_list.select { |each| each.item_promotion.eql?('buy_two_get_one') }
-    promotion_details << "----------------------------------\n买二赠一商品:\n" unless buy_two_get_one_cart_item_list.empty?
+    buy_two_get_one_cart_item_list = get_promotion_title(promotion_details)
     buy_two_get_one_cart_item_list.each do |each_cart_item|
       promotion_details << "名称: #{each_cart_item.item_name}, 数量: #{each_cart_item.number / 3}#{each_cart_item.item_unit}\n"
     end
     promotion_details
+  end
+
+  private
+  def get_promotion_title(promotion_details)
+    buy_two_get_one_cart_item_list = @cart_item_list.select { |each| each.item_promotion.eql?('buy_two_get_one') }
+    promotion_details << "----------------------------------\n买二赠一商品:\n" unless buy_two_get_one_cart_item_list.empty?
+    buy_two_get_one_cart_item_list
   end
 
 end
